@@ -36,6 +36,7 @@ class AjaxResponse extends CAttributeCollection implements IAjaxResponse {
 			}
 		}
 		$this->_response['response'] = $this->toArray();
+		$this->_response['YiiAjax'] = 1;
 		return $this->_response;
 	}
 }

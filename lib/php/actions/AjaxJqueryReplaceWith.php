@@ -1,5 +1,5 @@
 <?php
-class AjaxJqueryReplaceWithAction extends BaseAjaxAction {
+class AjaxJqueryReplaceWith extends BaseAjaxAction {
 
 	public $selector;
 	public $html;

@@ -1,5 +1,5 @@
 <?php
-class AjaxJqueryHtmlAction extends AjaxJqueryReplaceWithAction {
+class AjaxJqueryHtml extends AjaxJqueryReplaceWith {
 
 	/**
 	 * @return string

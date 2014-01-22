@@ -19,6 +19,11 @@ class YiiAjax extends CApplicationComponent {
 	);
 
 	/**
+	 * @var string
+	 */
+	protected $_assetUrl;
+
+	/**
 	 * @var IAjaxResponse
 	 */
 	protected static $_ajaxResponse;
@@ -44,10 +49,15 @@ class YiiAjax extends CApplicationComponent {
 		Yii::app()->getRequest()->getIsAjaxRequest() ? $this->initAjaxRequest() : $this->initHTTPRequest();
 	}
 
+	/**
+	 * @throws CException
+	 */
 	public function initAjaxRequest() {
 		if (!Yii::app()->getRequest()->getIsAjaxRequest() && Yii::app()->getRequest()->getParam('isYiiAjax')) {
 			return;
 		}
+		Yii::import('ext.yii-ajax.lib.php.components.*');
+		Yii::import('ext.yii-ajax.lib.php.actions.*');
 		Yii::app()->attachEventHandler('onEndRequest', array($this, 'onEndRequest'));
 		self::$_ajaxResponse = Yii::createComponent($this->ajaxResponse);
 		if (!(self::$_ajaxResponse instanceof IAjaxResponse)) {
@@ -55,9 +65,16 @@ class YiiAjax extends CApplicationComponent {
 		}
 	}
 
+	/**
+	 * 
+	 */
 	public function initHTTPRequest() {
 		if (Yii::app()->getRequest()->getIsAjaxRequest()) {
 			return;
+		}
+		$this->_assetUrl = Yii::app()->assetManager->publish(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'js');
+		if ($this->_assetUrl) {
+			Yii::app()->clientScript->registerScriptFile($this->_assetUrl . '/yii-ajax.js', CClientScript::POS_HEAD);
 		}
 	}
 
