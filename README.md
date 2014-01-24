@@ -1,6 +1,11 @@
 yii-ajax
 ========
 
+ - global response object in PHP -> YiiAjax::getResponse() // return object which implments ArrayAccess and Iterator interfaces
+ - with AjaxEvent you can send any event with any data from PHP and catch it in javascript
+ - AjaxJqueryReplaceWith automatically replace content in provided selector
+ - AjaxJqueryHtml similar to AjaxJqueryReplaceWith but use jquery html method
+
 ##Installation
 
  - using git: go to the ***application.ext*** directory and clone project<bR>
@@ -159,6 +164,8 @@ public function actionIndex() {
 }
 
 ```
+
+***You should use Yii::app()->end();***
 
 ####Global response object
 
