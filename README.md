@@ -80,7 +80,7 @@ protected function _test2() {
 
 ####Use YiiAjax.ajax
 
-YiiAjax.ajax method proxying success and done callbacks for reformat server response
+YiiAjax.ajax method proxying success and done callbacks for reformating server response
 
 js:
 
@@ -130,6 +130,20 @@ protected function _test2() {
 
 ```
 
+####If you use Jquery.ajax
+
+```php
+$.ajax({
+ url : '/test',
+ dataType : 'json',
+ success : function (response) {
+   YiiAjax.parse(response);
+   
+   // your response in response.response
+   console.log(response);
+ }
+});
+```
 
 ##PHP
 
