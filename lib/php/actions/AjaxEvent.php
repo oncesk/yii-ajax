@@ -9,12 +9,12 @@ class AjaxEvent extends BaseAjaxAction {
 	/**
 	 * @var array
 	 */
-	public $arguments = array();
+	public $data = array();
 
-	public function __construct($action, array $arguments = array()) {
+	public function __construct($action, array $data = array()) {
 		parent::__construct();
 		$this->action = $action;
-		$this->arguments = $arguments;
+		$this->data = $data;
 	}
 
 
@@ -38,7 +38,7 @@ class AjaxEvent extends BaseAjaxAction {
 	public function getAttributes() {
 		return array(
 			'id' => $this->getId(),
-			'attributes' => $this->arguments
+			'attributes' => $this->data
 		);
 	}
 }
