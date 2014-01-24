@@ -18,17 +18,12 @@ Set as a component
 ```php
 
 return array(
-  ...
   
   'components' => array(
-  
-    ...
-    
+
     'yiiAjax' => array(
       'class' => 'ext.yii-ajax.YiiAjax'
     )
-    
-    ...
     
   )
   
@@ -65,7 +60,7 @@ YiiAjax.on('error', function (errorObject) {
 });
 ```
 
-php:
+php (part of controller):
 
 ```php
 public function actionTest() {
@@ -112,7 +107,7 @@ YiiAjax.on('error', function (errorObject) {
 
 ```
 
-php:
+php (part of controller):
 
 ```php
 
@@ -161,7 +156,7 @@ public function actionIndex() {
 
 if request is ajax request you can use YiiAjax::getResponse() everywhere in you project
 
-PHP:
+php (part of controller):
 
 ```php
 
