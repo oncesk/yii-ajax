@@ -18,15 +18,11 @@ Set as a component
 ```php
 
 return array(
-  
   'components' => array(
-
     'yiiAjax' => array(
       'class' => 'ext.yii-ajax.YiiAjax'
     )
-    
   )
-  
 );
 
 ```
@@ -36,11 +32,9 @@ You can add extension into ***preload*** components in your ***config/main.php**
 ```php
 
 return array(
-
   'preload' => array(
     'yiiAjax'
   )
-  
 );
 
 ```
