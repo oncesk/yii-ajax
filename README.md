@@ -50,6 +50,58 @@ return array(
 
 In javascript use YiiAjax object
 
+##Before, After and Custom events
+
+In any callback function will be pasted chain, second parameter
+
+ - before:apply will be invoked before apply response actions
+
+```javascript
+YiiAjax.on('before:apply', function (response, chain) {
+ if (response['somekey']) {
+   chain.break = true; // and response parsing ends
+ }
+});
+```
+
+ - after:apply will be invoked after apply
+
+```javascript
+YiiAjax.on('after:apply', function (response, chain) {
+ console.log('called after parsing and apply actions');
+});
+```
+
+ - catch custom events
+
+```php
+new AjaxEvent('update.summary', array(
+ 'totalPrice' => 500,
+ 'deliveryPrice' => 30
+));
+
+```
+
+```javascript
+// triggered before invoke update.summary
+YiiAjax.on('before:update.summary', function (response, chain) {
+ // here you can break next execution or do some actions
+ console.log('before invoke update.summary');
+});
+
+YiiAjax.on('update.summary', function (response, chain) {
+ console.log('update.summary is invoked');
+
+ console.log('totalPrice is: ' + response.totalPrice);
+ // do any action
+});
+
+YiiAjax.on('after:update.summary', function (response) {
+ console.log('after update.summary');
+});
+
+```
+ 
 ####Bind event
 
 js:
